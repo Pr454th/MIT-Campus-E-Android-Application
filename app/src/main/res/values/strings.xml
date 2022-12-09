@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">webTech2</string>
+    <string name="ece">ECE</string>
+    <string name="rpt">RPT</string>
+    <string name="it">IT</string>
+    <string name="cse">CSE</string>
+    <string name="eee">EEE</string>
+</resources>
