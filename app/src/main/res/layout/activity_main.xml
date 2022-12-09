@@ -13,12 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <VideoView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/video"
-            />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +22,12 @@
             android:textColor="@color/black"
             android:background="@color/blue"
             android:layout_margin="2dp"/>
+        <VideoView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:id="@+id/video"
+            />
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,7 +120,6 @@
                 android:text="Location"
                 android:textSize="30dp"
                 android:textColor="@color/blue"
-                android:layout_alignParentLeft="true"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
