@@ -13,6 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/video"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MIT Campus"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:background="@color/blue"
+            android:layout_margin="2dp"/>
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,6 +56,18 @@
         android:id="@+id/avt"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Achievements:"
+            android:textSize="30dp"
+            android:textColor="@color/blue"
+            />
+        <ListView
+            android:id="@+id/ach"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,25 +84,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:src="@drawable/a" />
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:contentDescription="TODO"
-                    android:src="@drawable/a" />
-
+                    android:src="@drawable/b" />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:src="@drawable/a" />
+                    android:src="@drawable/c" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/d" />
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -88,20 +117,16 @@
                 android:id="@+id/About"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="30dp"
+                android:textColor="@color/blue"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/add" />
-            <Button
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="Add" />
-            <fragment
-                xmlns:map="http://schemas.android.com/apk/res-auto"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
+                />
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/map"/>
+                android:layout_height="200dp"
+                android:id="@+id/frameMap"
+                />
         </RelativeLayout>
 </LinearLayout>
 </ScrollView>

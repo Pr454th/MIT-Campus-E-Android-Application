@@ -1,15 +1,20 @@
 package com.prasath.webtech2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -22,10 +27,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-    ListView l,l2;
+public class MainActivity extends AppCompatActivity{
+    ListView l,l2,l3;
     String departments[]
     = { "IT","ECE","EEE","RPT","CSE" };
+    String achievements[]
+            = { "100% placements","Top placed in google","New  AIDS department"};
     String activities[]=
             {"Unveiling the statue of Bharat Ratna Dr.A.P.J.Abdul Kalam(Former President of India)New",
                     "Foundation For Excellence India Trust Scholarship(FFE, AFE) for the year 2022-2023New",
@@ -52,24 +59,39 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        //Video
+        VideoView videoView=(VideoView)findViewById(R.id.video);
+
+        //Creating MediaController
+        MediaController mediaController=new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        //specify the location of media file
+        Uri uri=Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.mit);
+        //Setting MediaController and URI, then starting the videoView
+        videoView.setMediaController(mediaController);
+        videoView.setVideoURI(uri);
+//        mediaController.setAnchorView(videoView);
+        videoView.requestFocus();
+        videoView.start();
+
         l2=findViewById(R.id.avt);
         ArrayAdapter<String> avtAdp=new ArrayAdapter<String>(this,R.layout.simple_list_item_1,R.id.listView,activities);
         l2.setAdapter(avtAdp);
+        l3=findViewById(R.id.ach);
+        ArrayAdapter<String> achAdp=new ArrayAdapter<String>(this,R.layout.simple_list_item_1,R.id.listView,achievements);
+        l3.setAdapter(achAdp);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        //Map
+        //Initialize fragment
+        Fragment fragment=new MapFragment();
 
+        //open fragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameMap,fragment)
+                .commit();
     }
-
-    // Get a handle to the GoogleMap object and display marker.
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
-    }
-
 
 
 //        l2=(ListView)findViewById(R.id.infrastructure);
